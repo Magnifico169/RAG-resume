@@ -1,7 +1,8 @@
 import json
 from datetime import datetime, date
 from decimal import Decimal
-from typing import Any, Dict
+from typing import Any
+from aiohttp import web
 
 
 class DateTimeEncoder(json.JSONEncoder):
@@ -28,7 +29,6 @@ def json_serialize(data: Any) -> str:
 
 def safe_json_response(data: Any, status: int = 200) -> Any:
     """Создает безопасный JSON response"""
-    from aiohttp import web
     return web.Response(
         text=json_serialize(data),
         content_type='application/json',

@@ -154,7 +154,8 @@ class Maybe:
         if self.value is not None:
             try:
                 return Maybe(func(self.value))
-            except Exception:
+            except Exception as e:
+                logger.error(f'Error to process func: {e}')
                 return Maybe(None)
         return self
 

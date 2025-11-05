@@ -14,8 +14,7 @@ from storage import JSONStorage
 from rag_analyzer import RAGAnalyzer
 from json_utils import safe_json_response
 from config import DATA_DIR, RESUMES_FILE, ANALYSES_FILE, HOST, PORT
-from auth import users_storage, get_current_user, require_login
-
+from auth import users_storage, get_current_user, require_login, create_admin_user
 
 logger = logging.getLogger(__name__)
 

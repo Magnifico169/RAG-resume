@@ -13,13 +13,12 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# Типы для функционального программирования
+
 T = TypeVar('T')
 WebHandler = Callable[[web.Request], Awaitable[web.StreamResponse]]
 AuthPredicate = Callable[[Optional['User']], bool]
 
 
-# Иммутабельные структуры данных
 @dataclass(frozen=True)
 class User:
     username: str
@@ -61,7 +60,6 @@ def verify_password(password: str, hashed: str) -> bool:
         return False
 
 
-# Функции высшего порядка для аутентификации
 def extract_token(request: web.Request) -> Optional[str]:
     """Извлекает токен из заголовка или query параметров"""
     auth_header = request.headers.get('Authorization', '')
@@ -121,7 +119,6 @@ async def create_admin_user(username: str, password: str) -> bool:
     )
 
 
-# Иммутабельное хранилище сессий
 class SessionStore:
     def __init__(self):
         self._sessions: Dict[str, User] = {}
@@ -345,8 +342,8 @@ class Maybe:
         if self.value is not None:
             try:
                 return Maybe(func(self.value))
-            except Exception:
-
+            except Exception as e:
+                logger.error(f'Error process applying monad Maybe to func: {e}')
                 return Maybe(None)
         return self
 
