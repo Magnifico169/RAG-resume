@@ -1,0 +1,245 @@
+[
+  {
+    "ts": "2025-10-07T20:16:12.321415",
+    "method": "GET",
+    "path": "/",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:16:12.955523",
+    "method": "GET",
+    "path": "/favicon.ico",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:16:32.513645",
+    "method": "GET",
+    "path": "/",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:16:32.638677",
+    "method": "GET",
+    "path": "/favicon.ico",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:18:22.376063",
+    "method": "GET",
+    "path": "/",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:18:32.670744",
+    "method": "GET",
+    "path": "/resumes",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 8
+  },
+  {
+    "ts": "2025-10-07T20:18:36.009463",
+    "method": "GET",
+    "path": "/",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:18:37.381967",
+    "method": "GET",
+    "path": "/jobs",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 1
+  },
+  {
+    "ts": "2025-10-07T20:18:41.121056",
+    "method": "GET",
+    "path": "/login",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:18:43.198320",
+    "method": "GET",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 5
+  },
+  {
+    "ts": "2025-10-07T20:18:53.030002",
+    "method": "POST",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 14
+  },
+  {
+    "ts": "2025-10-07T20:18:59.111230",
+    "method": "GET",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:19:02.035921",
+    "method": "GET",
+    "path": "/",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:19:02.855925",
+    "method": "GET",
+    "path": "/resumes",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 7
+  },
+  {
+    "ts": "2025-10-07T20:20:10.142033",
+    "method": "GET",
+    "path": "/jobs",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 11
+  },
+  {
+    "ts": "2025-10-07T20:20:13.224586",
+    "method": "GET",
+    "path": "/analyses",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 2
+  },
+  {
+    "ts": "2025-10-07T20:20:15.758972",
+    "method": "GET",
+    "path": "/admin",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:20:17.686901",
+    "method": "GET",
+    "path": "/analyses",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 15
+  },
+  {
+    "ts": "2025-10-07T20:21:24.213399",
+    "method": "GET",
+    "path": "/resumes",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 8
+  },
+  {
+    "ts": "2025-10-07T20:21:32.020216",
+    "method": "GET",
+    "path": "/login",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:21:33.357350",
+    "method": "POST",
+    "path": "/login",
+    "status": 401,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 1
+  },
+  {
+    "ts": "2025-10-07T20:21:35.774194",
+    "method": "GET",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:21:37.036055",
+    "method": "POST",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 10
+  },
+  {
+    "ts": "2025-10-07T20:21:38.981599",
+    "method": "GET",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:21:43.850657",
+    "method": "POST",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 12
+  },
+  {
+    "ts": "2025-10-07T20:21:46.245427",
+    "method": "GET",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 0
+  },
+  {
+    "ts": "2025-10-07T20:21:47.322669",
+    "method": "POST",
+    "path": "/register",
+    "status": 200,
+    "user": null,
+    "ip": "172.18.0.1",
+    "duration_ms": 6
+  }
+]
