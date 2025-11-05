@@ -1,121 +1,126 @@
 #!/usr/bin/env python3
 """
-Диагностический скрипт для проверки системы анализа
+Демонстрационный скрипт для тестирования API системы анализа резюме
 """
 
 import asyncio
 import aiohttp
 import json
-import sys
 
 BASE_URL = "http://localhost:8080"
 
-
-async def run_diagnostics():
-    """Запуск диагностики системы"""
-    print("🔧 Running system diagnostics...")
-
+async def test_api():
+    """Тестирование API функций"""
     async with aiohttp.ClientSession() as session:
-
-        print("1. Checking server availability...")
-        try:
-            async with session.get(f"{BASE_URL}/") as resp:
-                if resp.status == 200:
-                    print("   ✅ Server is running")
-                else:
-                    print(f"   ❌ Server returned status: {resp.status}")
-                    return False
-        except Exception as e:
-            print(f"   ❌ Cannot connect to server: {e}")
-            return False
-
-        print("2. Checking analysis debug endpoint...")
-        try:
-            async with session.get(f"{BASE_URL}/api/debug/analysis") as resp:
-                data = await resp.json()
-                print(f"   ✅ Debug endpoint response: {json.dumps(data, indent=2, ensure_ascii=False)}")
-        except Exception as e:
-            print(f"   ❌ Debug endpoint failed: {e}")
-
-        # 3. Проверка создания резюме
-        print("3. Testing resume creation...")
+        
+        print("🚀 Тестирование API системы анализа резюме\n")
+        
+        # 1. Создание резюме
+        print("1. Создание резюме...")
         resume_data = {
-            "name": "Диагностический Кандидат",
-            "position": "Test Developer",
-            "experience": 2,
-            "skills": ["Python", "Testing"],
-            "education": "Test Education",
-            "languages": ["Русский"],
+            "name": "Алексей Иванов",
+            "position": "Python Developer",
+            "experience": 4,
+            "skills": ["Python", "Django", "PostgreSQL", "Docker", "Git"],
+            "education": "Высшее техническое образование",
+            "languages": ["Русский", "Английский"],
             "contact_info": {
-                "email": "test@example.com",
-                "phone": "+7-000-000-00-00"
+                "email": "alexey@example.com",
+                "phone": "+7-999-123-45-67"
             }
         }
-
-        try:
-            async with session.post(f"{BASE_URL}/api/resumes", json=resume_data) as resp:
-                if resp.status == 200:
-                    result = await resp.json()
-                    print(f"   ✅ Resume created: {result['id']}")
-                    resume_id = result['id']
-                else:
-                    print(f"   ❌ Resume creation failed: {resp.status}")
-                    return False
-        except Exception as e:
-            print(f"   ❌ Resume creation error: {e}")
-            return False
-
-        print("4. Testing job creation...")
+        
+        async with session.post(f"{BASE_URL}/api/resumes", json=resume_data) as resp:
+            if resp.status == 200:
+                result = await resp.json()
+                resume_id = result["id"]
+                print(f"✅ Резюме создано с ID: {resume_id}")
+            else:
+                print(f"❌ Ошибка создания резюме: {resp.status}")
+                return
+        
+        # 2. Создание вакансии
+        print("\n2. Создание вакансии...")
         job_data = {
-            "title": "Test Developer",
-            "requirements": ["Опыт работы 1+ год"],
-            "responsibilities": ["Тестирование системы"],
-            "skills_required": ["Python", "Testing"],
-            "experience_required": 1
+            "title": "Senior Python Developer",
+            "requirements": ["Опыт работы 3+ лет", "Высшее техническое образование"],
+            "responsibilities": ["Разработка backend приложений", "Code review", "Менторство"],
+            "skills_required": ["Python", "Django", "PostgreSQL", "Docker", "Redis"],
+            "experience_required": 3
         }
-
-        try:
-            async with session.post(f"{BASE_URL}/api/jobs", json=job_data) as resp:
-                if resp.status == 200:
-                    result = await resp.json()
-                    print(f"   ✅ Job created: {result['id']}")
-                    job_id = result['id']
-                else:
-                    print(f"   ❌ Job creation failed: {resp.status}")
-                    return False
-        except Exception as e:
-            print(f"   ❌ Job creation error: {e}")
-            return False
-
-        print("5. Testing analysis...")
+        
+        async with session.post(f"{BASE_URL}/api/jobs", json=job_data) as resp:
+            if resp.status == 200:
+                result = await resp.json()
+                job_id = result["id"]
+                print(f"✅ Вакансия создана с ID: {job_id}")
+            else:
+                print(f"❌ Ошибка создания вакансии: {resp.status}")
+                return
+        
+        # 3. Анализ релевантности
+        print("\n3. Анализ релевантности резюме...")
         analysis_data = {
             "resume_id": resume_id,
             "job_id": job_id
         }
-
-        try:
-            async with session.post(f"{BASE_URL}/api/analyze", json=analysis_data) as resp:
-                if resp.status == 200:
-                    result = await resp.json()
-                    print("   ✅ Analysis completed successfully!")
-                    print(f"   📊 Results: {json.dumps(result, indent=2, ensure_ascii=False)}")
-                    return True
-                else:
-                    error_text = await resp.text()
-                    print(f"   ❌ Analysis failed: {resp.status}")
-                    print(f"   Error details: {error_text}")
-                    return False
-        except Exception as e:
-            print(f"   ❌ Analysis error: {e}")
-            return False
-
+        
+        async with session.post(f"{BASE_URL}/api/analyze", json=analysis_data) as resp:
+            if resp.status == 200:
+                analysis_result = await resp.json()
+                print("✅ Анализ завершен!")
+                print(f"   Релевантность: {analysis_result['job_match_percentage']}%")
+                print(f"   Оценка: {analysis_result['relevance_score']}/1.0")
+                print(f"   Сильные стороны: {', '.join(analysis_result['strengths'])}")
+                print(f"   Слабые стороны: {', '.join(analysis_result['weaknesses'])}")
+                print(f"   Рекомендации: {', '.join(analysis_result['recommendations'])}")
+            else:
+                print(f"❌ Ошибка анализа: {resp.status}")
+                error_text = await resp.text()
+                print(f"   Детали: {error_text}")
+        
+        # 4. Получение всех резюме
+        print("\n4. Получение списка резюме...")
+        async with session.get(f"{BASE_URL}/api/resumes") as resp:
+            if resp.status == 200:
+                resumes = await resp.json()
+                print(f"✅ Найдено резюме: {len(resumes)}")
+                for resume in resumes:
+                    print(f"   - {resume['name']} ({resume['position']})")
+            else:
+                print(f"❌ Ошибка получения резюме: {resp.status}")
+        
+        # 5. Получение всех вакансий
+        print("\n5. Получение списка вакансий...")
+        async with session.get(f"{BASE_URL}/api/jobs") as resp:
+            if resp.status == 200:
+                jobs = await resp.json()
+                print(f"✅ Найдено вакансий: {len(jobs)}")
+                for job in jobs:
+                    print(f"   - {job['title']}")
+            else:
+                print(f"❌ Ошибка получения вакансий: {resp.status}")
+        
+        # 6. Получение всех анализов
+        print("\n6. Получение списка анализов...")
+        async with session.get(f"{BASE_URL}/api/analyses") as resp:
+            if resp.status == 200:
+                analyses = await resp.json()
+                print(f"✅ Найдено анализов: {len(analyses)}")
+                for analysis in analyses:
+                    print(f"   - Анализ для резюме {analysis['resume_id']}: {analysis['job_match_percentage']}%")
+            else:
+                print(f"❌ Ошибка получения анализов: {resp.status}")
+        
+        print("\n🎉 Тестирование завершено!")
+        print(f"🌐 Веб-интерфейс доступен по адресу: {BASE_URL}")
 
 if __name__ == "__main__":
-    print("🚀 Starting comprehensive diagnostics...")
-    success = asyncio.run(run_diagnostics())
+    print("Убедитесь, что сервер запущен (python main.py)")
+    print("Нажмите Enter для продолжения...")
+    input()
+    asyncio.run(test_api())
 
-    if success:
-        print("\n🎉 All diagnostics passed! System is working correctly.")
-    else:
-        print("\n💥 Some diagnostics failed. Check the logs above.")
-        sys.exit(1)
+
+
+

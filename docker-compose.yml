@@ -9,8 +9,8 @@ services:
       - PORT=8080
       - DEBUG=True
       # Uncomment and set your key or use an .env file with compose
-      - OPENAI_API_KEY=
-      - SESSION_SECRET=
+      - OPENAI_API_KEY=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
+      - SESSION_SECRET=Mq1-wc11GnOBX8vFgNPwAK2D286jWiK0FRv8JT_2FZk=
     volumes:
       - ./data:/app/data
     restart: unless-stopped
